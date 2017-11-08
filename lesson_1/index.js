@@ -1,13 +1,15 @@
 window.addEventListener('DOMContentLoaded', init);
 
 function init() {
-  const width = 800;
-  const height = 600;
+  const width = 960;
+  const height = 540;
 
   // レンダラーを作成
-  const renderer = new THREE.WebGLRenderer();
+  const renderer = new THREE.WebGLRenderer({
+    canvas: document.querySelector('#myCanvas')
+  });
+  renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(width, height);
-  document.body.appendChild(renderer.domElement);
 
   // シーンを作成
   const scene = new THREE.Scene();
@@ -18,15 +20,16 @@ function init() {
 
   // 箱を作成
   const geometry = new THREE.BoxGeometry(500, 500, 500);
-  const material = new THREE.MeshPhongMaterial({color: 0x0000FF});
+  const material = new THREE.MeshStandardMaterial({color: 0x0000FF});
   const box = new THREE.Mesh(geometry, material);
   scene.add(box);
 
   // 平行光源
-  const directionalLight = new THREE.DirectionalLight(0xFFFFFF);
-  directionalLight.position.set(1, 1, 1);
+  const light = new THREE.DirectionalLight(0xFFFFFF);
+  light.intensity = 2; // 光の強さを倍に
+  light.position.set(1, 1, 1);
   // シーンに追加
-  scene.add(directionalLight);
+  scene.add(light);
 
   // 初回実行
   tick();
