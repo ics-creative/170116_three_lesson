@@ -8,15 +8,16 @@ function init() {
   const renderer = new THREE.WebGLRenderer({
     canvas: document.querySelector('#myCanvas')
   });
-  renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(width, height);
-
+  renderer.setPixelRatio(window.devicePixelRatio);
+  
   // シーンを作成
   const scene = new THREE.Scene();
 
   // カメラを作成
   const camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
-  camera.position.set(0, 0, +1000);
+  // カメラの初期座標を設定（X座標:0, Y座標:0, Z座標:0）
+  camera.position.set(0, 0, 1000);
 
   // 箱を作成
   const geometry = new THREE.BoxGeometry(500, 500, 500);
@@ -27,7 +28,7 @@ function init() {
   // 平行光源
   const light = new THREE.DirectionalLight(0xFFFFFF);
   light.intensity = 2; // 光の強さを倍に
-  light.position.set(1, 1, 1);
+  light.position.set(1, 1, 1); // ライトの方向
   // シーンに追加
   scene.add(light);
 
