@@ -3,9 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <!-- three.jsを読み込む -->
-  <script src="https://unpkg.com/three@0.146.0/build/three.min.js"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/"
+      }
+    }
+  </script>
   <!-- index.jsを読み込む -->
-  <script src="index.js"></script>
+  <script type="module" src="index.js"></script>
 </head>
 <body>
   <canvas id="myCanvas"></canvas>
