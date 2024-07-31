@@ -8,7 +8,7 @@ const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector("#myCanvas")
 });
 renderer.setSize(width, height);
-renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setPixelRatio(devicePixelRatio);
 
 // シーンを作成
 const scene = new THREE.Scene();
