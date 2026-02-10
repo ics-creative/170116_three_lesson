@@ -24,21 +24,22 @@
       antialias: true
     });
     renderer.setSize(width, height);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setPixelRatio(devicePixelRatio);
     renderer.setAnimationLoop(tick);
 
     // シーンを作成
     const scene = new THREE.Scene();
 
-    // カメラを作成
+    // カメラを作成(画角, アスペクト比, 描画開始距離, 描画終了距離)
     const camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
-    // カメラの初期座標を設定（X座標:0, Y座標:0, Z座標:0）
+    // カメラの初期座標を設定（X座標, Y座標, Z座標）
     camera.position.set(0, 0, 1000);
 
-    // 箱を作成
+    // 箱を作成(幅, 高さ, 奥行き)
     const geometry = new THREE.BoxGeometry(500, 500, 500);
     const material = new THREE.MeshStandardMaterial({color: 0x0000FF});
     const box = new THREE.Mesh(geometry, material);
+    // シーンに追加
     scene.add(box);
 
     // 平行光源
